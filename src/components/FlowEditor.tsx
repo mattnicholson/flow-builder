@@ -20,6 +20,7 @@ import {
   addNodeToFlow,
   applyChangesToNodes,
   applyChangesToEdges,
+  processNode,
 } from "../state/flowState";
 
 const nodeTypes = {
@@ -75,6 +76,8 @@ const FlowEditor = () => {
 
     // Use the helper function to safely add the node
     addNodeToFlow(newNode);
+
+    processNode(newNodeId);
   };
 
   const onConnect = useCallback(

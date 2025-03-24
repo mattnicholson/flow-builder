@@ -54,7 +54,6 @@ export const updateNodeData = (nodeId: string, data: any) => {
 
 // Add a node safely
 export const addNodeToFlow = (node: Node) => {
-  console.log("Adding node to flow:", node.id);
   // Set the flag to prevent immediate removal during next render cycle
   flowState._pendingNodeAdditions = true;
 
@@ -81,7 +80,7 @@ export const processNode = (nodeId: string) => {
       flowState.nodeData[nodeId] || {}
     );
 
-    console.log("PROCESSED", node, result);
+    //console.log("PROCESSED", node, result);
 
     // Update the node's output data
     flowState.nodeData[nodeId] = {
@@ -123,6 +122,8 @@ export const getDownstreamNodes = (nodeId: string): string[] => {
 export const processFlow = () => {
   // Find nodes without inputs (starting nodes)
   const startNodeIds = findStartNodes();
+
+  //console.log("start nodes", startNodeIds);
 
   // Process each starting node
   startNodeIds.forEach((nodeId) => processNode(nodeId));
